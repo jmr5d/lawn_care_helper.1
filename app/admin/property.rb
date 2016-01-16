@@ -1,4 +1,5 @@
 ActiveAdmin.register Property do
+  permit_params :address1, :address2, :city, :state, :latitude, :longitude, :altitude, :country, :zipcode, :size_in_acres, :length_in_feet, :width_in_feet
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
