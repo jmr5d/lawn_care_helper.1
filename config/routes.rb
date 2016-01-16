@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :properties
+
   resources :contracts
 
   devise_for :admin_users, ActiveAdmin::Devise.config
