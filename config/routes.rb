@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :service_types
+
   resources :properties
 
   resources :contracts
