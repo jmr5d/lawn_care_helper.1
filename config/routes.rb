@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
+  resources :shopping_cart_items
+
+  resources :shopping_carts
+
   resources :payments
-
   resources :invoices
-
   resources :contract_services
-
   resources :service_types
-
   resources :properties
-
   resources :contracts
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -18,7 +17,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'service_types#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
