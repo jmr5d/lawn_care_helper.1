@@ -1,6 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   include ApplicationHelper
-
+  
   def create
     super
   end
@@ -12,4 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
     super
   end
+
+  private
+
 end

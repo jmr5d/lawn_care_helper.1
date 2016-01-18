@@ -1,0 +1,5 @@
+== TODO
+
+* steps for registration, add property, get quote
+* shopping cart functionality for services
+*

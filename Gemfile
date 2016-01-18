@@ -28,6 +28,8 @@ gem 'spring',        group: :development
 
 gem 'acts_as_shopping_cart', '~> 0.2.1'
 
+gem 'rubillow'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

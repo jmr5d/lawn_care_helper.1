@@ -16,3 +16,23 @@
 //= require bootstrap
 
 //= require_tree .
+
+// function remove_fields (link) {
+// 	$(link).previous("input[type=hidden]").value = "1";
+// 	$(link).up(".subfields").hide();
+// }
+
+
+//clean implementation of link_to_function
+// see: http://stackoverflow.com/questions/14324919/status-of-rails-link-to-function-deprecation
+$(function(){
+  $('[data-on][data-call][data-args]').each(function(d){
+    try{
+       $(this).on( $(this).data('on'), function(){
+          window[$(this).data('call')].apply(window,$(this).data('args'))})
+    }catch(e){
+       if(typeof(console) != 'undefined' && typeof(console.log === 'function'))
+         console.log(e);
+    }
+  });
+})

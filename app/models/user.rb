@@ -5,5 +5,12 @@ class User < ActiveRecord::Base
         :recoverable, :rememberable, :trackable, :validatable
   has_many :contracts
   has_many :properties
-  validates_formatting_of :phone, using: :us_phone
+  # validates_formatting_of :phone, using: :us_phone
+  accepts_nested_attributes_for :properties, allow_destroy: true
+  # reject_if: proc {|attribs| attribs.any.blank? }, 
+
+  def with_properties
+  	self.properties.build if self.properties.empty?
+  	self
+  end
 end

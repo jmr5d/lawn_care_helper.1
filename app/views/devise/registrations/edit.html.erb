@@ -1,6 +1,6 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for [resource_name, resource.with_properties], :url => registration_path(resource_name), :html => { method: :put } do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -27,6 +27,21 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <%= f.fields_for :properties do |p| %>
+    <div class="field"><%= p.text_field :address1, :placeholder => "123 Anystreet St", class: "text-field form-control" %></div>
+    <div class="field"><%= p.text_field :address2, :placeholder => "Apt 1", class: "text-field form-control" %></div>
+    <div class="field"><%= p.text_field :city, :placeholder => "San Francisco", class: "text-field form-control" %></div>
+    <div class="field"><%= p.text_field :state, :placeholder => "CA", class: "text-field form-control" %></div>
+    <div class="field"><%= p.text_field :zipcode, :placeholder => "90210", class: "text-field form-control" %></div>
+    <div class="field"><%= p.text_field :size_in_acres, :placeholder => "Acres, such as .5 or .25", class: "text-field form-control"%></div>
+    <%= p.hidden_field :latitude, class: "text-field form-control" %>
+    <%= p.hidden_field :longitude, class: "text-field form-control" %>
+    <%# p.text_field :altitude, class: "text-field form-control" %>
+    <%= p.hidden_field :_destroy %>
+    <%= p.check_box :_destroy %>
+    <%= p.label :_destroy, "Remove" %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
@@ -37,3 +52,9 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+<ol>
+  <% for property in @user.properties %>
+    <li><%= property.address1 %></li>
+  <% end %>
+</ol>
